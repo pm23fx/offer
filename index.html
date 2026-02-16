@@ -16,7 +16,6 @@
       --line: #e5e7eb;
       --bg: #f3efe8;
       --ok: #159d77;
-      --warn: #f59e0b;
       --danger: #dc2626;
     }
 
@@ -33,10 +32,7 @@
       line-height: 1.5;
     }
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
+    .page { max-width: 1120px; margin: 0 auto; }
 
     .lang-toggle {
       display: flex;
@@ -71,19 +67,46 @@
     }
 
     .hero {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      padding: 24px;
+      padding: 18px 24px 24px;
       color: #fff;
-      background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+      background:
+        linear-gradient(120deg, rgba(255,255,255,0.08), transparent 35%),
+        linear-gradient(135deg, #8f2020, #5f1111 70%, #450c0c);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .logo-wrap { text-align: center; }
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hero-mark {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.84);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+
+    .hero-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-wrap { text-align: center; flex: 0 0 auto; }
 
     .logo {
-      width: 86px;
-      height: 86px;
+      width: 92px;
+      height: 92px;
       border-radius: 14px;
       object-fit: contain;
       background: #fff;
@@ -102,14 +125,11 @@
       cursor: pointer;
     }
 
-    .brand-main {
-      flex: 1;
-      min-width: 0;
-    }
+    .brand-main { flex: 1; min-width: 0; }
 
     .brand-main h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 31px;
+      font-size: 45px;
       line-height: 1.2;
       margin-bottom: 4px;
       word-break: break-word;
@@ -129,11 +149,13 @@
       color: #fff;
     }
 
-    .content {
-      padding: 22px;
-      display: grid;
-      gap: 16px;
-    }
+    .print-hidden { display: block; }
+
+    body[dir="rtl"] .hero-top { flex-direction: row-reverse; }
+    body[dir="rtl"] .hero-main { flex-direction: row-reverse; }
+    body[dir="rtl"] .brand-main { text-align: right; }
+
+    .content { padding: 22px; display: grid; gap: 16px; }
 
     .section {
       border: 1px solid var(--line);
@@ -160,14 +182,7 @@
       background: var(--accent);
     }
 
-    .grid {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-    }
-
-    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
-
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0,1fr)); }
     .field label {
       font-size: 11px;
       color: var(--muted);
@@ -189,10 +204,7 @@
       transition: border-color .2s ease, box-shadow .2s ease;
     }
 
-    textarea {
-      min-height: 92px;
-      resize: vertical;
-    }
+    textarea { min-height: 92px; resize: vertical; }
 
     input:focus, select:focus, textarea:focus {
       outline: none;
@@ -202,11 +214,7 @@
 
     .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
-    .line-items {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
+    .line-items { display: grid; gap: 10px; margin-bottom: 10px; }
 
     .line-item {
       display: grid;
@@ -250,13 +258,7 @@
       background: linear-gradient(135deg, #5b1414, #8c2727);
     }
 
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 7px 0;
-      gap: 10px;
-      font-size: 14px;
-    }
+    .summary-row { display: flex; justify-content: space-between; padding: 7px 0; gap: 10px; font-size: 14px; }
 
     .summary-row.total {
       font-weight: 800;
@@ -281,13 +283,6 @@
       background: rgba(255,255,255,0.16);
       color: #fff;
       border-color: rgba(255,255,255,0.3);
-    }
-
-    .dual-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 8px;
     }
 
     .portfolio-head {
@@ -318,11 +313,6 @@
       margin-bottom: 10px;
     }
 
-    .portfolio-upload:hover {
-      border-color: var(--brand);
-      background: #fff;
-    }
-
     .portfolio-grid {
       display: grid;
       gap: 10px;
@@ -337,32 +327,10 @@
       position: relative;
     }
 
-    .portfolio-item img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      background: #f3f4f6;
-    }
-
-    .portfolio-body {
-      padding: 10px;
-      display: grid;
-      gap: 6px;
-    }
-
-    .portfolio-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-      word-break: break-word;
-    }
-
-    .portfolio-link {
-      font-size: 12px;
-      color: var(--brand);
-      text-decoration: none;
-      word-break: break-all;
-    }
+    .portfolio-item img { width: 100%; height: 120px; object-fit: cover; background: #f3f4f6; }
+    .portfolio-body { padding: 10px; display: grid; gap: 6px; }
+    .portfolio-title { font-size: 13px; font-weight: 700; color: var(--ink); word-break: break-word; }
+    .portfolio-link { font-size: 12px; color: var(--brand); text-decoration: none; word-break: break-all; }
 
     .portfolio-remove {
       position: absolute;
@@ -378,6 +346,12 @@
       cursor: pointer;
     }
 
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
     .signature-wrap {
       border: 1px solid var(--line);
       border-radius: 12px;
@@ -385,9 +359,9 @@
       background: #fcfcfc;
     }
 
-    #signaturePad {
+    .signature-pad {
       width: 100%;
-      height: 180px;
+      height: 170px;
       display: block;
       background: #fff;
       touch-action: none;
@@ -395,12 +369,7 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .signature-actions {
-      display: flex;
-      gap: 8px;
-      padding: 10px;
-      flex-wrap: wrap;
-    }
+    .signature-actions { display: flex; gap: 8px; padding: 10px; flex-wrap: wrap; }
 
     .ghost-btn, .danger-btn {
       border: 1px solid var(--line);
@@ -413,10 +382,21 @@
       font-size: 13px;
     }
 
-    .danger-btn {
-      border-color: rgba(220, 38, 38, 0.35);
-      color: var(--danger);
+    .danger-btn { border-color: rgba(220, 38, 38, 0.35); color: var(--danger); }
+
+    .approval-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fafafa;
+      font-size: 14px;
     }
+
+    .approval-row input { width: 18px; height: 18px; accent-color: var(--brand); flex: 0 0 auto; }
 
     .footer {
       border-top: 1px solid var(--line);
@@ -429,12 +409,7 @@
     }
 
     .footer strong { color: var(--ink); }
-
-    .footer a {
-      color: var(--brand);
-      text-decoration: none;
-      font-weight: 700;
-    }
+    .footer a { color: var(--brand); text-decoration: none; font-weight: 700; }
 
     .actions {
       margin-top: 14px;
@@ -460,26 +435,34 @@
     .action.secondary { background: var(--accent); color: #fff; }
     .action.success { background: var(--ok); color: #fff; }
 
-    .action:hover { filter: brightness(0.95); }
-
     .hidden { display: none !important; }
 
     @media print {
       body { padding: 0; background: #fff; }
-      .lang-toggle, .actions, .logo-input, #logoInput, #portfolioInput, .portfolio-upload, .portfolio-head, .add-item, .remove-item, .portfolio-remove, .signature-actions {
+      .lang-toggle, .actions, .logo-input, #logoInput, #portfolioInput, .portfolio-upload, .portfolio-head, .add-item, .remove-item, .portfolio-remove, .signature-actions, .print-hidden {
         display: none !important;
       }
       .sheet { box-shadow: none; border: none; border-radius: 0; }
       .content { padding: 12px; }
-      input, select, textarea { border-color: #ddd; box-shadow: none !important; }
+      input, select, textarea {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-top: 2px !important;
+        padding-bottom: 2px !important;
+      }
     }
 
     @media (max-width: 860px) {
-      .grid, .grid-3, .dual-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
       .line-item { grid-template-columns: 1fr; }
       .portfolio-head { grid-template-columns: 1fr; }
-      .hero { flex-direction: column; text-align: center; }
-      .brand-main h1 { font-size: 27px; }
+      .signature-grid { grid-template-columns: 1fr; }
+      .hero-top { flex-direction: column; align-items: flex-start; }
+      .hero-main { flex-direction: column-reverse; text-align: center; }
+      .brand-main h1 { font-size: 30px; }
     }
   </style>
 </head>
@@ -492,28 +475,32 @@
 
     <div class="sheet" id="proposal">
       <header class="hero">
-        <div class="logo-wrap">
-          <img id="logo" class="logo" src="https://omoginteriors.com/logo.png" alt="Company Logo">
-          <label class="logo-input" for="logoInput" data-i18n="changeLogo">Change Logo</label>
-          <input id="logoInput" type="file" accept="image/*" class="hidden" onchange="uploadLogo(event)">
+        <div class="hero-top">
+          <div class="hero-mark" data-i18n="headerMark">Interior Offer</div>
+          <div class="hero-mark" data-i18n="headerCountry">QATAR</div>
         </div>
-        <div class="brand-main">
-          <h1 id="brandTitle"></h1>
-          <div class="sub" id="brandSub"></div>
-          <span class="badge" id="badgeText"></span>
+        <div class="hero-main">
+          <div class="brand-main">
+            <h1 id="brandTitle"></h1>
+            <div class="sub" id="brandSub"></div>
+            <span class="badge" id="badgeText"></span>
+          </div>
+          <div class="logo-wrap">
+            <img id="logo" class="logo" src="https://omoginteriors.com/logo.png" alt="Company Logo">
+            <label class="logo-input" for="logoInput" data-i18n="changeLogo">Change Logo</label>
+            <input id="logoInput" type="file" accept="image/*" class="hidden" onchange="uploadLogo(event)">
+          </div>
         </div>
       </header>
 
       <main class="content">
         <section class="section">
-          <h2 data-i18n="companyProfile">Company Profile (Editable)</h2>
-          <div class="dual-grid">
-            <div class="field"><label data-i18n="companyNameEn">Company Name (EN)</label><input id="companyNameEn" value="OMO G INTERIOR DECORATION" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="companyNameAr">Company Name (AR)</label><input id="companyNameAr" value="أوموج للديكور الداخلي" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="companyTagEn">Tagline (EN)</label><input id="companyTaglineEn" value="Trading & Interior Design Specialists - Doha, Qatar" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="companyTagAr">Tagline (AR)</label><input id="companyTaglineAr" value="التجارة والتصميم الداخلي - الدوحة، قطر" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="offerBadgeEn">Offer Badge (EN)</label><input id="offerBadgeEn" value="Syaanh Fast Offer" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="offerBadgeAr">Offer Badge (AR)</label><input id="offerBadgeAr" value="عرض صيانة سريع" oninput="refreshTexts()"></div>
+          <h2 data-i18n="companyProfile">Company Profile</h2>
+          <div class="grid">
+            <div class="field"><label data-i18n="companyName">Company Name</label><input id="companyName"></div>
+            <div class="field"><label data-i18n="companyTag">Tagline</label><input id="companyTagline"></div>
+            <div class="field"><label data-i18n="offerBadge">Offer Badge</label><input id="offerBadge"></div>
+            <div class="field"><label data-i18n="offerRef">Offer Reference</label><input id="offerRef" placeholder="OFF-2026-001"></div>
           </div>
         </section>
 
@@ -524,7 +511,6 @@
             <div class="field"><label data-i18n="location">Location</label><input id="location" data-i18n-placeholder="locationPlaceholder" placeholder="Area, Doha"></div>
             <div class="field"><label data-i18n="phone">Phone Number</label><input id="phone" type="tel" placeholder="+974 XXXX XXXX"></div>
             <div class="field"><label data-i18n="offerDate">Offer Date</label><input id="date" type="date"></div>
-            <div class="field"><label data-i18n="offerRef">Offer Reference</label><input id="offerRef" placeholder="OFF-2026-001"></div>
             <div class="field"><label data-i18n="currency">Currency</label>
               <select id="currency" onchange="calculateTotal()">
                 <option value="QAR">QAR</option>
@@ -569,10 +555,7 @@
           </div>
           <div class="field" style="margin-top:10px;">
             <label data-i18n="scopeOfWork">Scope of Work</label>
-            <textarea id="scope" data-i18n-placeholder="scopePlaceholder">- Gypsum ceiling installation
-- LED cove lighting provision
-- Smooth finishing and paint
-- Clean delivery</textarea>
+            <textarea id="scope" data-i18n-placeholder="scopePlaceholder"></textarea>
           </div>
         </section>
 
@@ -593,26 +576,10 @@
         </section>
 
         <section class="section">
-          <h2 data-i18n="whyChoose">Why Choose Us (Editable)</h2>
-          <div class="dual-grid">
-            <div class="field">
-              <label data-i18n="highlightsEn">Highlights (EN, one per line)</label>
-              <textarea id="highlightsEn">Licensed & Registered in Qatar (CR: 235664)
-45+ Successfully Completed Projects
-Professional Team with Years of Experience
-High-Quality Materials & Clean Finishing
-Warranty on All Work
-Transparent Pricing - No Hidden Costs</textarea>
-            </div>
-            <div class="field">
-              <label data-i18n="highlightsAr">Highlights (AR, one per line)</label>
-              <textarea id="highlightsAr">مرخص ومسجل في قطر (السجل التجاري: 235664)
-أكثر من 45 مشروعاً منجزاً بنجاح
-فريق احترافي بخبرة طويلة
-مواد عالية الجودة وتشطيب نظيف
-ضمان على جميع الأعمال
-تسعير واضح دون تكاليف مخفية</textarea>
-            </div>
+          <h2 data-i18n="whyChoose">Why Choose Us</h2>
+          <div class="field">
+            <label data-i18n="highlights">Highlights (one per line)</label>
+            <textarea id="highlights"></textarea>
           </div>
         </section>
 
@@ -635,67 +602,83 @@ Transparent Pricing - No Hidden Costs</textarea>
         </section>
 
         <section class="section">
-          <h2 data-i18n="terms">Terms & Conditions (Editable)</h2>
-          <div class="dual-grid">
+          <h2 data-i18n="terms">Terms & Conditions</h2>
+          <div class="grid">
             <div class="field">
-              <label data-i18n="paymentTermsEn">Payment Terms (EN, one per line)</label>
-              <textarea id="paymentTermsEn">50% deposit required to start work
-50% balance due upon project completion
-Payments accepted via cash, bank transfer, or card</textarea>
+              <label data-i18n="paymentTerms">Payment Terms (one per line)</label>
+              <textarea id="paymentTerms"></textarea>
             </div>
             <div class="field">
-              <label data-i18n="paymentTermsAr">Payment Terms (AR, one per line)</label>
-              <textarea id="paymentTermsAr">50٪ دفعة مقدمة لبدء العمل
-50٪ عند اكتمال المشروع
-الدفع نقداً أو تحويل بنكي أو بطاقة</textarea>
-            </div>
-            <div class="field">
-              <label data-i18n="warrantyEn">Warranty (EN)</label>
-              <textarea id="warrantyEn">All work comes with a 1-year warranty covering workmanship defects.</textarea>
-            </div>
-            <div class="field">
-              <label data-i18n="warrantyAr">Warranty (AR)</label>
-              <textarea id="warrantyAr">جميع الأعمال تشمل ضمان لمدة سنة ضد عيوب التنفيذ.</textarea>
+              <label data-i18n="warranty">Warranty</label>
+              <textarea id="warranty"></textarea>
             </div>
           </div>
         </section>
 
         <section class="section">
           <h2 data-i18n="digitalSignature">Digital Signature</h2>
-          <div class="signature-wrap">
-            <canvas id="signaturePad"></canvas>
-            <div class="signature-actions">
-              <button type="button" class="ghost-btn" onclick="saveSignature()" data-i18n="saveSignature">Save Signature</button>
-              <button type="button" class="danger-btn" onclick="clearSignature()" data-i18n="clearSignature">Clear Signature</button>
-              <span id="signatureStatus" class="hint" data-i18n="signatureHint">Sign using mouse or touch, then click Save Signature.</span>
+          <div class="signature-grid">
+            <div>
+              <h3 style="font-size:15px;margin-bottom:8px;color:var(--brand);" data-i18n="clientSignature">Client Signature</h3>
+              <div class="signature-wrap">
+                <canvas id="signaturePadClient" class="signature-pad"></canvas>
+                <div class="signature-actions">
+                  <button type="button" class="ghost-btn" onclick="saveSignature('client')" data-i18n="saveSignature">Save Signature</button>
+                  <button type="button" class="danger-btn" onclick="clearSignature('client')" data-i18n="clearSignature">Clear Signature</button>
+                  <span id="signatureStatusClient" class="hint" data-i18n="signatureHint">Sign using mouse or touch, then click Save Signature.</span>
+                </div>
+              </div>
+              <div class="grid" style="margin-top:10px;">
+                <div class="field"><label data-i18n="clientSignName">Client Signer Name</label><input id="clientSignerName" placeholder="Client name"></div>
+                <div class="field"><label data-i18n="clientSignTitle">Client Signer Title</label><input id="clientSignerTitle" placeholder="Owner / Representative"></div>
+                <div class="field"><label data-i18n="signDate">Signature Date</label><input id="signatureDateClient" type="date"></div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="font-size:15px;margin-bottom:8px;color:var(--brand);" data-i18n="companySignature">Company Signature</h3>
+              <div class="signature-wrap">
+                <canvas id="signaturePadCompany" class="signature-pad"></canvas>
+                <div class="signature-actions">
+                  <button type="button" class="ghost-btn" onclick="saveSignature('company')" data-i18n="saveSignature">Save Signature</button>
+                  <button type="button" class="danger-btn" onclick="clearSignature('company')" data-i18n="clearSignature">Clear Signature</button>
+                  <span id="signatureStatusCompany" class="hint" data-i18n="signatureHint">Sign using mouse or touch, then click Save Signature.</span>
+                </div>
+              </div>
+              <div class="grid" style="margin-top:10px;">
+                <div class="field"><label data-i18n="companySignName">Company Signer Name</label><input id="companySignerName"></div>
+                <div class="field"><label data-i18n="companySignTitle">Company Signer Title</label><input id="companySignerTitle" value="CEO"></div>
+                <div class="field"><label data-i18n="signDate">Signature Date</label><input id="signatureDateCompany" type="date"></div>
+              </div>
             </div>
           </div>
-          <div class="grid" style="margin-top:10px;">
-            <div class="field"><label data-i18n="signName">Signer Name</label><input id="signerName" placeholder="Client or representative"></div>
-            <div class="field"><label data-i18n="signTitle">Signer Title</label><input id="signerTitle" placeholder="Manager / Owner"></div>
-            <div class="field"><label data-i18n="signDate">Signature Date</label><input id="signatureDate" type="date"></div>
+
+          <label class="approval-row">
+            <input id="offerApproved" type="checkbox">
+            <span data-i18n="approvalCheck">Client confirms and approves this offer and scope.</span>
+          </label>
+          <p class="hint print-hidden" data-i18n="autosaveHint">Changes are auto-saved in this browser.</p>
+          <div style="margin-top:10px;" class="print-hidden">
+            <button type="button" class="ghost-btn" onclick="clearSavedState()" data-i18n="clearSavedData">Clear Saved Data</button>
           </div>
         </section>
 
         <section class="section">
-          <h2 data-i18n="contactFooter">Contact & Footer (Editable)</h2>
+          <h2 data-i18n="contactFooter">Contact & Footer</h2>
           <div class="grid">
-            <div class="field"><label data-i18n="phone">Phone</label><input id="companyPhone" value="+974 7102 1381" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="email">Email</label><input id="companyEmail" value="info@omoginteriors.com" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="website">Website</label><input id="companyWebsite" value="https://omoginteriors.com" oninput="refreshTexts()"></div>
-            <div class="field"><label data-i18n="social">Instagram / TikTok</label><input id="companySocial" value="Instagram: @omogdecor | TikTok: @omog_decor" oninput="refreshTexts()"></div>
+            <div class="field"><label data-i18n="phone">Phone</label><input id="companyPhone" value="+974 7102 1381"></div>
+            <div class="field"><label data-i18n="email">Email</label><input id="companyEmail" value="info@omoginteriors.com"></div>
+            <div class="field"><label data-i18n="website">Website</label><input id="companyWebsite" value="https://omoginteriors.com"></div>
+            <div class="field"><label data-i18n="social">Instagram / TikTok</label><input id="companySocial" value="Instagram: @omogdecor | TikTok: @omog_decor"></div>
           </div>
-          <div class="dual-grid">
-            <div class="field"><label data-i18n="addressEn">Address (EN)</label><textarea id="companyAddressEn" oninput="refreshTexts()">Office 70, 2nd Floor Block E, Al Mirqab Mall, Doha</textarea></div>
-            <div class="field"><label data-i18n="addressAr">Address (AR)</label><textarea id="companyAddressAr" oninput="refreshTexts()">مكتب 70، الطابق الثاني، بلوك E، المرقاب مول، الدوحة</textarea></div>
-          </div>
+          <div class="field" style="margin-top:10px;"><label data-i18n="address">Address</label><textarea id="companyAddress"></textarea></div>
 
           <div class="footer" id="footerPreview">
-            <strong id="footerCompany">OMO G Trading And Interior Decoration</strong>
+            <strong id="footerCompany">OMO G INTERIOR DECORATION</strong>
             <div><span>📞 </span><a id="footerPhoneLink" href="tel:+97471021381">+974 7102 1381</a></div>
             <div><span>📧 </span><a id="footerEmailLink" href="mailto:info@omoginteriors.com">info@omoginteriors.com</a></div>
             <div><span>🌐 </span><a id="footerWebsiteLink" target="_blank" href="https://omoginteriors.com">omoginteriors.com</a></div>
-            <div id="footerAddress">Office 70, 2nd Floor Block E, Al Mirqab Mall, Doha</div>
+            <div id="footerAddress"></div>
             <div id="footerSocial">CR No: 235664 | Instagram: @omogdecor | TikTok: @omog_decor</div>
           </div>
         </section>
@@ -713,13 +696,12 @@ Payments accepted via cash, bank transfer, or card</textarea>
     const i18n = {
       en: {
         changeLogo: 'Change Logo',
-        companyProfile: 'Company Profile (Editable)',
-        companyNameEn: 'Company Name (EN)',
-        companyNameAr: 'Company Name (AR)',
-        companyTagEn: 'Tagline (EN)',
-        companyTagAr: 'Tagline (AR)',
-        offerBadgeEn: 'Offer Badge (EN)',
-        offerBadgeAr: 'Offer Badge (AR)',
+        headerMark: 'Interior Offer',
+        headerCountry: 'QATAR',
+        companyProfile: 'Company Profile',
+        companyName: 'Company Name',
+        companyTag: 'Tagline',
+        offerBadge: 'Offer Badge',
         clientInfo: 'Client Information',
         clientName: 'Client Name',
         clientNamePlaceholder: 'Enter client name',
@@ -744,9 +726,8 @@ Payments accepted via cash, bank transfer, or card</textarea>
         subtotal: 'Subtotal',
         discount: 'Discount (%)',
         total: 'TOTAL',
-        whyChoose: 'Why Choose Us (Editable)',
-        highlightsEn: 'Highlights (EN, one per line)',
-        highlightsAr: 'Highlights (AR, one per line)',
+        whyChoose: 'Why Choose Us',
+        highlights: 'Highlights (one per line)',
         portfolio: 'Portfolio Links & Images',
         uploadPortfolio: 'Click to upload portfolio images',
         portfolioTitlePlaceholder: 'Project title',
@@ -754,21 +735,25 @@ Payments accepted via cash, bank transfer, or card</textarea>
         portfolioThumbPlaceholder: 'Optional thumbnail image URL',
         addLink: 'Add Link',
         portfolioHint: 'You can add image uploads and external portfolio links together.',
-        terms: 'Terms & Conditions (Editable)',
-        paymentTermsEn: 'Payment Terms (EN, one per line)',
-        paymentTermsAr: 'Payment Terms (AR, one per line)',
-        warrantyEn: 'Warranty (EN)',
-        warrantyAr: 'Warranty (AR)',
+        terms: 'Terms & Conditions',
+        paymentTerms: 'Payment Terms (one per line)',
+        warranty: 'Warranty',
         digitalSignature: 'Digital Signature',
+        clientSignature: 'Client Signature',
+        companySignature: 'Company Signature',
         saveSignature: 'Save Signature',
         clearSignature: 'Clear Signature',
         signatureHint: 'Sign using mouse or touch, then click Save Signature.',
-        signName: 'Signer Name',
-        signTitle: 'Signer Title',
+        clientSignName: 'Client Signer Name',
+        clientSignTitle: 'Client Signer Title',
+        companySignName: 'Company Signer Name',
+        companySignTitle: 'Company Signer Title',
         signDate: 'Signature Date',
-        contactFooter: 'Contact & Footer (Editable)',
-        addressEn: 'Address (EN)',
-        addressAr: 'Address (AR)',
+        approvalCheck: 'Client confirms and approves this offer and scope.',
+        autosaveHint: 'Changes are auto-saved in this browser.',
+        clearSavedData: 'Clear Saved Data',
+        contactFooter: 'Contact & Footer',
+        address: 'Address',
         exportPdf: 'Export PDF',
         shareWhatsApp: 'Share via WhatsApp',
         copySummary: 'Copy Summary',
@@ -778,17 +763,22 @@ Payments accepted via cash, bank transfer, or card</textarea>
         remove: 'Remove',
         signatureSaved: 'Signature saved.',
         signatureCleared: 'Signature cleared.',
-        copied: 'Offer summary copied to clipboard.'
+        copied: 'Offer summary copied to clipboard.',
+        openLink: 'Open link',
+        imageUpload: 'Image upload',
+        linkRequired: 'Please enter a portfolio link.',
+        noSignature: 'No signature to save yet.',
+        approved: 'Approved',
+        pending: 'Pending'
       },
       ar: {
         changeLogo: 'تغيير الشعار',
-        companyProfile: 'بيانات الشركة (قابلة للتعديل)',
-        companyNameEn: 'اسم الشركة (EN)',
-        companyNameAr: 'اسم الشركة (AR)',
-        companyTagEn: 'الوصف (EN)',
-        companyTagAr: 'الوصف (AR)',
-        offerBadgeEn: 'شارة العرض (EN)',
-        offerBadgeAr: 'شارة العرض (AR)',
+        headerMark: 'عرض داخلي',
+        headerCountry: 'قطر',
+        companyProfile: 'بيانات الشركة',
+        companyName: 'اسم الشركة',
+        companyTag: 'الوصف',
+        offerBadge: 'شارة العرض',
         clientInfo: 'معلومات العميل',
         clientName: 'اسم العميل',
         clientNamePlaceholder: 'اكتب اسم العميل',
@@ -813,9 +803,8 @@ Payments accepted via cash, bank transfer, or card</textarea>
         subtotal: 'المجموع الفرعي',
         discount: 'الخصم (%)',
         total: 'الإجمالي',
-        whyChoose: 'لماذا تختارنا (قابل للتعديل)',
-        highlightsEn: 'نقاط القوة (EN، سطر لكل نقطة)',
-        highlightsAr: 'نقاط القوة (AR، سطر لكل نقطة)',
+        whyChoose: 'لماذا تختارنا',
+        highlights: 'نقاط القوة (سطر لكل نقطة)',
         portfolio: 'معرض الأعمال (روابط وصور)',
         uploadPortfolio: 'اضغط لرفع صور الأعمال',
         portfolioTitlePlaceholder: 'عنوان المشروع',
@@ -823,21 +812,25 @@ Payments accepted via cash, bank transfer, or card</textarea>
         portfolioThumbPlaceholder: 'رابط صورة مصغرة اختياري',
         addLink: 'إضافة رابط',
         portfolioHint: 'يمكنك إضافة صور وروابط خارجية معاً.',
-        terms: 'الشروط والأحكام (قابلة للتعديل)',
-        paymentTermsEn: 'شروط الدفع (EN، سطر لكل نقطة)',
-        paymentTermsAr: 'شروط الدفع (AR، سطر لكل نقطة)',
-        warrantyEn: 'الضمان (EN)',
-        warrantyAr: 'الضمان (AR)',
+        terms: 'الشروط والأحكام',
+        paymentTerms: 'شروط الدفع (سطر لكل نقطة)',
+        warranty: 'الضمان',
         digitalSignature: 'التوقيع الرقمي',
+        clientSignature: 'توقيع العميل',
+        companySignature: 'توقيع الشركة',
         saveSignature: 'حفظ التوقيع',
         clearSignature: 'مسح التوقيع',
         signatureHint: 'وقّع بالماوس أو اللمس ثم اضغط حفظ التوقيع.',
-        signName: 'اسم الموقّع',
-        signTitle: 'صفة الموقّع',
+        clientSignName: 'اسم ممثل العميل',
+        clientSignTitle: 'صفة ممثل العميل',
+        companySignName: 'اسم ممثل الشركة',
+        companySignTitle: 'صفة ممثل الشركة',
         signDate: 'تاريخ التوقيع',
-        contactFooter: 'التواصل والتذييل (قابل للتعديل)',
-        addressEn: 'العنوان (EN)',
-        addressAr: 'العنوان (AR)',
+        approvalCheck: 'يؤكد العميل الموافقة على هذا العرض ونطاق العمل.',
+        autosaveHint: 'يتم حفظ التغييرات تلقائياً في هذا المتصفح.',
+        clearSavedData: 'مسح البيانات المحفوظة',
+        contactFooter: 'التواصل والتذييل',
+        address: 'العنوان',
         exportPdf: 'تصدير PDF',
         shareWhatsApp: 'مشاركة عبر واتساب',
         copySummary: 'نسخ الملخص',
@@ -847,14 +840,42 @@ Payments accepted via cash, bank transfer, or card</textarea>
         remove: 'حذف',
         signatureSaved: 'تم حفظ التوقيع.',
         signatureCleared: 'تم مسح التوقيع.',
-        copied: 'تم نسخ ملخص العرض.'
+        copied: 'تم نسخ ملخص العرض.',
+        openLink: 'فتح الرابط',
+        imageUpload: 'صورة مرفوعة',
+        linkRequired: 'الرجاء إدخال رابط المشروع.',
+        noSignature: 'لا يوجد توقيع للحفظ.',
+        approved: 'موافق',
+        pending: 'قيد المراجعة'
       }
     };
 
-    let currentLang = 'en';
+    const defaults = {
+      en: {
+        companyName: 'OMO G INTERIOR DECORATION',
+        companyTagline: 'Trading & Interior Design Specialists - Doha, Qatar',
+        offerBadge: 'Fast Offer',
+        highlights: 'Licensed & Registered in Qatar (CR: 235664)\n45+ Successfully Completed Projects\nProfessional Team with Years of Experience\nHigh-Quality Materials & Clean Finishing\nWarranty on All Work\nTransparent Pricing - No Hidden Costs',
+        paymentTerms: '50% deposit required to start work\n50% balance due upon project completion\nPayments accepted via cash, bank transfer, or card',
+        warranty: 'All work comes with a 1-year warranty covering workmanship defects.',
+        address: 'Office 70, 2nd Floor Block E, Al Mirqab Mall, Doha',
+        scope: '- Gypsum ceiling installation/repair\n- LED cove lighting provision (optional)\n- Smooth finishing and paint\n- Clean delivery and site cleanup'
+      },
+      ar: {
+        companyName: 'أوموج للديكور الداخلي',
+        companyTagline: 'التجارة والتصميم الداخلي - الدوحة، قطر',
+        offerBadge: 'عرض سريع',
+        highlights: 'مرخص ومسجل في قطر (السجل التجاري: 235664)\nأكثر من 45 مشروعاً منجزاً بنجاح\nفريق احترافي بخبرة طويلة\nمواد عالية الجودة وتشطيب نظيف\nضمان على جميع الأعمال\nتسعير واضح دون تكاليف مخفية',
+        paymentTerms: '50٪ دفعة مقدمة لبدء العمل\n50٪ عند اكتمال المشروع\nالدفع نقداً أو تحويل بنكي أو بطاقة',
+        warranty: 'جميع الأعمال تشمل ضمان لمدة سنة ضد عيوب التنفيذ.',
+        address: 'مكتب 70، الطابق الثاني، بلوك E، المرقاب مول، الدوحة',
+        scope: '- تركيب/إصلاح جبس الأسقف\n- توفير إضاءة مخفية LED (اختياري)\n- تشطيب ناعم ودهان\n- تسليم نظيف مع تنظيف الموقع'
+      }
+    };
+
     const serviceTemplates = {
       en: {
-        gypsum: '- Gypsum ceiling installation/repair\n- LED cove lighting provision (optional)\n- Smooth finishing and paint\n- Clean delivery and site cleanup',
+        gypsum: defaults.en.scope,
         painting: '- Wall preparation and filling\n- Premium quality paint application\n- Two coats minimum\n- Clean finishing and touch-ups',
         '3dwall': '- 3D wall panel installation\n- Surface preparation\n- Professional mounting\n- LED backlighting (optional)',
         furniture: '- Custom furniture design\n- Material selection consultation\n- Professional installation\n- Finishing touches',
@@ -862,7 +883,7 @@ Payments accepted via cash, bank transfer, or card</textarea>
         turnkey: '- Complete design concept\n- Material procurement\n- Full project execution\n- Furniture and accessories\n- Final handover'
       },
       ar: {
-        gypsum: '- تركيب/إصلاح جبس الأسقف\n- توفير إضاءة مخفية LED (اختياري)\n- تشطيب ناعم ودهان\n- تسليم نظيف مع تنظيف الموقع',
+        gypsum: defaults.ar.scope,
         painting: '- تجهيز الجدران ومعالجة العيوب\n- دهان بجودة عالية\n- طبقتان على الأقل\n- تشطيب نهائي وتنظيف',
         '3dwall': '- تركيب ألواح جدارية ثلاثية الأبعاد\n- تجهيز السطح\n- تثبيت احترافي\n- إضاءة خلفية LED (اختياري)',
         furniture: '- تصميم أثاث حسب الطلب\n- استشارة اختيار المواد\n- تركيب احترافي\n- اللمسات النهائية',
@@ -871,20 +892,45 @@ Payments accepted via cash, bank transfer, or card</textarea>
       }
     };
 
+    const STORAGE_KEY = 'omog_offer_generator_state_v4';
+    const LANG_SCOPED_FIELDS = ['companyName', 'companyTagline', 'offerBadge', 'highlights', 'paymentTerms', 'warranty', 'companyAddress', 'scope'];
+    let currentLang = 'en';
+    let saveTimer = null;
+    let isRestoringState = false;
+    const langScoped = { en: {}, ar: {} };
+
     const portfolioItems = [];
-    const signatureCanvas = document.getElementById('signaturePad');
-    const signatureCtx = signatureCanvas.getContext('2d');
-    let drawing = false;
-    let hasSignature = false;
+    const signaturePads = {};
 
     function normalizePhone(phone) {
       return (phone || '').replace(/[^\d+]/g, '');
     }
 
-    function getLangText(enId, arId) {
-      const enVal = (document.getElementById(enId)?.value || '').trim();
-      const arVal = (document.getElementById(arId)?.value || '').trim();
-      return currentLang === 'ar' ? (arVal || enVal) : (enVal || arVal);
+    function getDefaultForField(lang, fieldId) {
+      const mapKey = fieldId === 'companyAddress' ? 'address' : fieldId;
+      if (fieldId === 'scope') {
+        const serviceType = document.getElementById('serviceType').value;
+        return serviceTemplates[lang][serviceType] || defaults[lang].scope;
+      }
+      return defaults[lang][mapKey] || '';
+    }
+
+    function captureScopedFields(lang) {
+      LANG_SCOPED_FIELDS.forEach(fieldId => {
+        const el = document.getElementById(fieldId);
+        if (!el) return;
+        const value = (el.value || '').trim();
+        langScoped[lang][fieldId] = value || getDefaultForField(lang, fieldId);
+      });
+    }
+
+    function applyScopedFields(lang) {
+      LANG_SCOPED_FIELDS.forEach(fieldId => {
+        const el = document.getElementById(fieldId);
+        if (!el) return;
+        const stored = langScoped[lang][fieldId];
+        el.value = (stored && stored.length) ? stored : getDefaultForField(lang, fieldId);
+      });
     }
 
     function translateUi() {
@@ -893,6 +939,7 @@ Payments accepted via cash, bank transfer, or card</textarea>
         const key = el.getAttribute('data-i18n');
         if (dict[key]) el.textContent = dict[key];
       });
+
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (dict[key]) el.placeholder = dict[key];
@@ -909,23 +956,34 @@ Payments accepted via cash, bank transfer, or card</textarea>
       document.getElementById('btnAR').classList.toggle('active', currentLang === 'ar');
 
       renderLineItemLabels();
-      refreshTexts();
       renderPortfolio();
+      refreshTexts();
+    }
+
+    function setLang(lang) {
+      if (lang === currentLang) return;
+      captureScopedFields(currentLang);
+      currentLang = lang;
+      applyScopedFields(currentLang);
+      translateUi();
+      scheduleSaveState();
     }
 
     function refreshTexts() {
-      document.getElementById('brandTitle').textContent = getLangText('companyNameEn', 'companyNameAr');
-      document.getElementById('brandSub').textContent = getLangText('companyTaglineEn', 'companyTaglineAr');
-      document.getElementById('badgeText').textContent = getLangText('offerBadgeEn', 'offerBadgeAr');
+      const companyName = document.getElementById('companyName').value.trim();
+      const companyTagline = document.getElementById('companyTagline').value.trim();
+      const offerBadge = document.getElementById('offerBadge').value.trim();
+
+      document.getElementById('brandTitle').textContent = companyName || '-';
+      document.getElementById('brandSub').textContent = companyTagline || '-';
+      document.getElementById('badgeText').textContent = offerBadge || '-';
 
       const phone = document.getElementById('companyPhone').value.trim();
       const email = document.getElementById('companyEmail').value.trim();
       const website = document.getElementById('companyWebsite').value.trim();
       const websiteLabel = website.replace(/^https?:\/\//, '') || website;
-      const footerCompany = getLangText('companyNameEn', 'companyNameAr');
-      const footerAddress = getLangText('companyAddressEn', 'companyAddressAr');
 
-      document.getElementById('footerCompany').textContent = footerCompany || '-';
+      document.getElementById('footerCompany').textContent = companyName || '-';
       const phoneLink = document.getElementById('footerPhoneLink');
       phoneLink.textContent = phone || '-';
       phoneLink.href = `tel:${normalizePhone(phone)}`;
@@ -938,19 +996,24 @@ Payments accepted via cash, bank transfer, or card</textarea>
       websiteLink.textContent = websiteLabel || '-';
       websiteLink.href = website || '#';
 
-      document.getElementById('footerAddress').textContent = footerAddress || '-';
+      document.getElementById('footerAddress').textContent = document.getElementById('companyAddress').value.trim() || '-';
       document.getElementById('footerSocial').textContent = `CR No: 235664 | ${document.getElementById('companySocial').value.trim() || '-'}`;
-    }
 
-    function setLang(lang) {
-      currentLang = lang;
-      translateUi();
+      const companySignerName = document.getElementById('companySignerName');
+      if (companySignerName.dataset.auto === '1') {
+        companySignerName.value = companyName || defaults[currentLang].companyName;
+      }
     }
 
     function uploadLogo(event) {
       const file = event.target.files && event.target.files[0];
       if (!file) return;
-      document.getElementById('logo').src = URL.createObjectURL(file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById('logo').src = reader.result;
+        saveState();
+      };
+      reader.readAsDataURL(file);
     }
 
     function newLineItemRow() {
@@ -994,11 +1057,13 @@ Payments accepted via cash, bank transfer, or card</textarea>
       const parent = button.closest('.line-item');
       if (parent) parent.remove();
       calculateTotal();
+      scheduleSaveState();
     }
 
     function calculateTotal() {
       const currency = document.getElementById('currency').value || 'QAR';
       let subtotal = 0;
+
       document.querySelectorAll('.line-item').forEach(item => {
         const qty = parseFloat(item.querySelector('.item-qty')?.value || '0') || 0;
         const price = parseFloat(item.querySelector('.item-price')?.value || '0') || 0;
@@ -1014,6 +1079,7 @@ Payments accepted via cash, bank transfer, or card</textarea>
       document.getElementById('totalAmount').textContent = `${currency} ${total.toFixed(2)}`;
 
       renderLineItemLabels();
+      scheduleSaveState();
     }
 
     function updateServiceScope() {
@@ -1022,20 +1088,27 @@ Payments accepted via cash, bank transfer, or card</textarea>
       if (template) {
         document.getElementById('scope').value = template;
       }
+      captureScopedFields(currentLang);
+      scheduleSaveState();
     }
 
     function addPortfolioImages(event) {
       const files = Array.from(event.target.files || []);
       files.forEach(file => {
-        portfolioItems.push({
-          id: crypto.randomUUID(),
-          type: 'image',
-          title: file.name,
-          href: '',
-          thumb: URL.createObjectURL(file)
-        });
+        const reader = new FileReader();
+        reader.onload = () => {
+          portfolioItems.push({
+            id: crypto.randomUUID(),
+            type: 'image',
+            title: file.name,
+            href: '',
+            thumb: reader.result
+          });
+          renderPortfolio();
+          scheduleSaveState();
+        };
+        reader.readAsDataURL(file);
       });
-      renderPortfolio();
       event.target.value = '';
     }
 
@@ -1045,7 +1118,7 @@ Payments accepted via cash, bank transfer, or card</textarea>
       const thumb = document.getElementById('portfolioThumbInput').value.trim();
 
       if (!href) {
-        alert(currentLang === 'ar' ? 'الرجاء إدخال رابط المشروع.' : 'Please enter a portfolio link.');
+        alert(i18n[currentLang].linkRequired);
         return;
       }
 
@@ -1061,17 +1134,21 @@ Payments accepted via cash, bank transfer, or card</textarea>
       document.getElementById('portfolioLinkInput').value = '';
       document.getElementById('portfolioThumbInput').value = '';
       renderPortfolio();
+      scheduleSaveState();
     }
 
     function removePortfolioItem(id) {
       const index = portfolioItems.findIndex(item => item.id === id);
       if (index !== -1) portfolioItems.splice(index, 1);
       renderPortfolio();
+      scheduleSaveState();
     }
 
     function renderPortfolio() {
+      const dict = i18n[currentLang];
       const container = document.getElementById('portfolio');
       container.innerHTML = '';
+
       portfolioItems.forEach(item => {
         const card = document.createElement('article');
         card.className = 'portfolio-item';
@@ -1081,10 +1158,9 @@ Payments accepted via cash, bank transfer, or card</textarea>
           : '<img src="https://dummyimage.com/400x240/f2f2f2/7a1f1f&text=Portfolio+Link" alt="Portfolio link">';
 
         const safeTitle = item.title || (currentLang === 'ar' ? 'رابط مشروع' : 'Project link');
-        const linkText = currentLang === 'ar' ? 'فتح الرابط' : 'Open link';
         const body = item.href
-          ? `<a class="portfolio-link" href="${item.href}" target="_blank" rel="noopener">${linkText}</a>`
-          : '<span class="hint">Image upload</span>';
+          ? `<a class="portfolio-link" href="${item.href}" target="_blank" rel="noopener">${dict.openLink}</a>`
+          : `<span class="hint">${dict.imageUpload}</span>`;
 
         card.innerHTML = `
           ${thumb}
@@ -1098,63 +1174,221 @@ Payments accepted via cash, bank transfer, or card</textarea>
       });
     }
 
-    function resizeCanvas() {
-      const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      const displayWidth = signatureCanvas.clientWidth;
-      const displayHeight = signatureCanvas.clientHeight;
-      signatureCanvas.width = Math.floor(displayWidth * ratio);
-      signatureCanvas.height = Math.floor(displayHeight * ratio);
-      signatureCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
-      signatureCtx.lineWidth = 2;
-      signatureCtx.lineCap = 'round';
-      signatureCtx.strokeStyle = '#111827';
-    }
+    function setupSignaturePad(name, canvasId, statusId) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+      signaturePads[name] = { canvas, ctx, statusId, drawing: false, hasInk: false, savedData: '' };
 
-    function getCanvasPos(evt) {
-      const rect = signatureCanvas.getBoundingClientRect();
-      const source = evt.touches ? evt.touches[0] : evt;
-      return {
-        x: source.clientX - rect.left,
-        y: source.clientY - rect.top
+      const start = evt => {
+        const pad = signaturePads[name];
+        pad.drawing = true;
+        const p = getCanvasPos(canvas, evt);
+        pad.ctx.beginPath();
+        pad.ctx.moveTo(p.x, p.y);
+        evt.preventDefault();
       };
+
+      const move = evt => {
+        const pad = signaturePads[name];
+        if (!pad.drawing) return;
+        const p = getCanvasPos(canvas, evt);
+        pad.ctx.lineTo(p.x, p.y);
+        pad.ctx.stroke();
+        pad.hasInk = true;
+        evt.preventDefault();
+      };
+
+      const end = () => {
+        const pad = signaturePads[name];
+        pad.drawing = false;
+        pad.ctx.closePath();
+      };
+
+      canvas.addEventListener('mousedown', start);
+      canvas.addEventListener('mousemove', move);
+      canvas.addEventListener('mouseup', end);
+      canvas.addEventListener('mouseleave', end);
+      canvas.addEventListener('touchstart', start, { passive: false });
+      canvas.addEventListener('touchmove', move, { passive: false });
+      canvas.addEventListener('touchend', end);
+
+      resizeSignaturePad(name);
     }
 
-    function startDraw(evt) {
-      drawing = true;
-      const p = getCanvasPos(evt);
-      signatureCtx.beginPath();
-      signatureCtx.moveTo(p.x, p.y);
-      evt.preventDefault();
+    function getCanvasPos(canvas, evt) {
+      const rect = canvas.getBoundingClientRect();
+      const source = evt.touches ? evt.touches[0] : evt;
+      return { x: source.clientX - rect.left, y: source.clientY - rect.top };
     }
 
-    function draw(evt) {
-      if (!drawing) return;
-      const p = getCanvasPos(evt);
-      signatureCtx.lineTo(p.x, p.y);
-      signatureCtx.stroke();
-      hasSignature = true;
-      evt.preventDefault();
+    function resizeSignaturePad(name) {
+      const pad = signaturePads[name];
+      if (!pad) return;
+      const hasSaved = !!pad.savedData;
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      const displayWidth = pad.canvas.clientWidth;
+      const displayHeight = pad.canvas.clientHeight;
+      pad.canvas.width = Math.floor(displayWidth * ratio);
+      pad.canvas.height = Math.floor(displayHeight * ratio);
+      pad.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      pad.ctx.lineWidth = 2;
+      pad.ctx.lineCap = 'round';
+      pad.ctx.strokeStyle = '#111827';
+      if (hasSaved) drawSignatureFromData(name, pad.savedData);
     }
 
-    function endDraw() {
-      drawing = false;
-      signatureCtx.closePath();
+    function resizeAllSignaturePads() {
+      Object.keys(signaturePads).forEach(name => resizeSignaturePad(name));
     }
 
-    function clearSignature() {
-      signatureCtx.clearRect(0, 0, signatureCanvas.width, signatureCanvas.height);
-      hasSignature = false;
-      document.getElementById('signatureStatus').textContent = i18n[currentLang].signatureCleared;
+    function drawSignatureFromData(name, dataUrl) {
+      const pad = signaturePads[name];
+      if (!pad || !dataUrl) return;
+      const img = new Image();
+      img.onload = () => {
+        pad.ctx.clearRect(0, 0, pad.canvas.width, pad.canvas.height);
+        pad.ctx.drawImage(img, 0, 0, pad.canvas.clientWidth, pad.canvas.clientHeight);
+        pad.hasInk = true;
+      };
+      img.src = dataUrl;
     }
 
-    function saveSignature() {
-      if (!hasSignature) {
-        document.getElementById('signatureStatus').textContent = currentLang === 'ar'
-          ? 'لا يوجد توقيع للحفظ.'
-          : 'No signature to save yet.';
+    function clearSignature(name) {
+      const pad = signaturePads[name];
+      pad.ctx.clearRect(0, 0, pad.canvas.width, pad.canvas.height);
+      pad.hasInk = false;
+      pad.savedData = '';
+      document.getElementById(pad.statusId).textContent = i18n[currentLang].signatureCleared;
+      scheduleSaveState();
+    }
+
+    function saveSignature(name) {
+      const pad = signaturePads[name];
+      if (!pad.hasInk) {
+        document.getElementById(pad.statusId).textContent = i18n[currentLang].noSignature;
         return;
       }
-      document.getElementById('signatureStatus').textContent = i18n[currentLang].signatureSaved;
+      pad.savedData = pad.canvas.toDataURL('image/png');
+      document.getElementById(pad.statusId).textContent = i18n[currentLang].signatureSaved;
+      saveState();
+    }
+
+    function collectLineItems() {
+      return Array.from(document.querySelectorAll('.line-item')).map(row => ({
+        desc: row.querySelector('.item-desc')?.value || '',
+        qty: row.querySelector('.item-qty')?.value || '1',
+        price: row.querySelector('.item-price')?.value || ''
+      }));
+    }
+
+    function restoreLineItems(items) {
+      const container = document.getElementById('lineItems');
+      container.innerHTML = '';
+      if (!items || !items.length) {
+        addLineItem();
+        return;
+      }
+      items.forEach(entry => {
+        const row = newLineItemRow();
+        row.querySelector('.item-desc').value = entry.desc || '';
+        row.querySelector('.item-qty').value = entry.qty || '1';
+        row.querySelector('.item-price').value = entry.price || '';
+        container.appendChild(row);
+      });
+      renderLineItemLabels();
+      calculateTotal();
+    }
+
+    function scheduleSaveState() {
+      if (isRestoringState) return;
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveState, 180);
+    }
+
+    function saveState() {
+      if (isRestoringState) return;
+      const values = {};
+      document.querySelectorAll('input[id], select[id], textarea[id]').forEach(el => {
+        if (el.type === 'file') return;
+        values[el.id] = el.type === 'checkbox' ? el.checked : el.value;
+      });
+      const state = {
+        values,
+        currentLang,
+        langScoped,
+        lineItems: collectLineItems(),
+        portfolioItems,
+        logoSrc: document.getElementById('logo').src || '',
+        signatures: {
+          client: signaturePads.client?.savedData || '',
+          company: signaturePads.company?.savedData || ''
+        },
+        companySignerAuto: document.getElementById('companySignerName').dataset.auto || '0'
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      try {
+        const state = JSON.parse(raw);
+        isRestoringState = true;
+
+        if (state.values && typeof state.values === 'object') {
+          Object.entries(state.values).forEach(([id, value]) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            if (el.type === 'checkbox') el.checked = !!value;
+            else el.value = value;
+          });
+        }
+
+        if (state.langScoped && typeof state.langScoped === 'object') {
+          if (state.langScoped.en) langScoped.en = { ...langScoped.en, ...state.langScoped.en };
+          if (state.langScoped.ar) langScoped.ar = { ...langScoped.ar, ...state.langScoped.ar };
+        }
+
+        restoreLineItems(state.lineItems);
+
+        portfolioItems.length = 0;
+        if (Array.isArray(state.portfolioItems)) {
+          state.portfolioItems.forEach(item => portfolioItems.push(item));
+        }
+
+        if (state.logoSrc) {
+          document.getElementById('logo').src = state.logoSrc;
+        }
+
+        if (state.signatures?.client) {
+          signaturePads.client.savedData = state.signatures.client;
+          drawSignatureFromData('client', state.signatures.client);
+        }
+
+        if (state.signatures?.company) {
+          signaturePads.company.savedData = state.signatures.company;
+          drawSignatureFromData('company', state.signatures.company);
+        }
+
+        if (state.companySignerAuto) {
+          document.getElementById('companySignerName').dataset.auto = state.companySignerAuto;
+        }
+
+        currentLang = state.currentLang || 'en';
+        applyScopedFields(currentLang);
+        translateUi();
+        return true;
+      } catch (error) {
+        console.error('Failed to load state', error);
+        return false;
+      } finally {
+        isRestoringState = false;
+      }
+    }
+
+    function clearSavedState() {
+      localStorage.removeItem(STORAGE_KEY);
+      window.location.reload();
     }
 
     function getPortfolioLinksForText() {
@@ -1165,6 +1399,7 @@ Payments accepted via cash, bank transfer, or card</textarea>
     }
 
     function generateSummaryText() {
+      const dict = i18n[currentLang];
       const client = document.getElementById('client').value.trim() || (currentLang === 'ar' ? 'عميل' : 'Valued Customer');
       const service = document.getElementById('serviceType').selectedOptions[0]?.textContent || '-';
       const total = document.getElementById('totalAmount').textContent;
@@ -1173,6 +1408,7 @@ Payments accepted via cash, bank transfer, or card</textarea>
       const scope = document.getElementById('scope').value.trim();
       const ref = document.getElementById('offerRef').value.trim() || '-';
       const links = getPortfolioLinksForText();
+      const approved = document.getElementById('offerApproved').checked;
 
       if (currentLang === 'ar') {
         return `عرض OMO G\n\n` +
@@ -1184,6 +1420,9 @@ Payments accepted via cash, bank transfer, or card</textarea>
           `تاريخ البدء: ${startDate}\n\n` +
           `نطاق العمل:\n${scope}\n\n` +
           (links ? `روابط الأعمال:\n${links}\n\n` : '') +
+          `ممثل العميل: ${document.getElementById('clientSignerName').value.trim() || '-'}\n` +
+          `ممثل الشركة: ${document.getElementById('companySignerName').value.trim() || '-'}\n` +
+          `حالة الموافقة: ${approved ? dict.approved : dict.pending}\n` +
           `الهاتف: ${document.getElementById('companyPhone').value.trim()}\n` +
           `الموقع: ${document.getElementById('companyWebsite').value.trim()}`;
       }
@@ -1197,13 +1436,15 @@ Payments accepted via cash, bank transfer, or card</textarea>
         `Start Date: ${startDate}\n\n` +
         `Scope:\n${scope}\n\n` +
         (links ? `Portfolio Links:\n${links}\n\n` : '') +
+        `Client Signer: ${document.getElementById('clientSignerName').value.trim() || '-'}\n` +
+        `Company Signer: ${document.getElementById('companySignerName').value.trim() || '-'}\n` +
+        `Approval: ${approved ? dict.approved : dict.pending}\n` +
         `Phone: ${document.getElementById('companyPhone').value.trim()}\n` +
         `Website: ${document.getElementById('companyWebsite').value.trim()}`;
     }
 
     function shareWhatsApp() {
-      const text = generateSummaryText();
-      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+      window.open(`https://wa.me/?text=${encodeURIComponent(generateSummaryText())}`, '_blank');
     }
 
     function copyToClipboard() {
@@ -1213,30 +1454,75 @@ Payments accepted via cash, bank transfer, or card</textarea>
     }
 
     function bindLiveUpdates() {
-      ['companyNameEn', 'companyNameAr', 'companyTaglineEn', 'companyTaglineAr', 'offerBadgeEn', 'offerBadgeAr', 'companyPhone', 'companyEmail', 'companyWebsite', 'companyAddressEn', 'companyAddressAr', 'companySocial'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener('input', refreshTexts);
+      const main = document.querySelector('main');
+      main.addEventListener('input', () => {
+        refreshTexts();
+        captureScopedFields(currentLang);
+        scheduleSaveState();
+      });
+      main.addEventListener('change', scheduleSaveState);
+
+      const companySignerName = document.getElementById('companySignerName');
+      companySignerName.addEventListener('input', () => {
+        companySignerName.dataset.auto = '0';
       });
     }
 
+    function applyInitialDefaults() {
+      document.getElementById('companyName').value = defaults.en.companyName;
+      document.getElementById('companyTagline').value = defaults.en.companyTagline;
+      document.getElementById('offerBadge').value = defaults.en.offerBadge;
+      document.getElementById('highlights').value = defaults.en.highlights;
+      document.getElementById('paymentTerms').value = defaults.en.paymentTerms;
+      document.getElementById('warranty').value = defaults.en.warranty;
+      document.getElementById('companyAddress').value = defaults.en.address;
+      document.getElementById('scope').value = defaults.en.scope;
+      document.getElementById('companySignerName').value = defaults.en.companyName;
+      document.getElementById('companySignerName').dataset.auto = '1';
+      langScoped.en = {
+        companyName: defaults.en.companyName,
+        companyTagline: defaults.en.companyTagline,
+        offerBadge: defaults.en.offerBadge,
+        highlights: defaults.en.highlights,
+        paymentTerms: defaults.en.paymentTerms,
+        warranty: defaults.en.warranty,
+        companyAddress: defaults.en.address,
+        scope: defaults.en.scope
+      };
+      langScoped.ar = {
+        companyName: defaults.ar.companyName,
+        companyTagline: defaults.ar.companyTagline,
+        offerBadge: defaults.ar.offerBadge,
+        highlights: defaults.ar.highlights,
+        paymentTerms: defaults.ar.paymentTerms,
+        warranty: defaults.ar.warranty,
+        companyAddress: defaults.ar.address,
+        scope: defaults.ar.scope
+      };
+    }
+
     function init() {
-      document.getElementById('date').valueAsDate = new Date();
-      document.getElementById('signatureDate').valueAsDate = new Date();
+      const now = new Date();
+      document.getElementById('date').valueAsDate = now;
+      document.getElementById('signatureDateClient').valueAsDate = now;
+      document.getElementById('signatureDateCompany').valueAsDate = now;
+
+      applyInitialDefaults();
       addLineItem();
+
+      setupSignaturePad('client', 'signaturePadClient', 'signatureStatusClient');
+      setupSignaturePad('company', 'signaturePadCompany', 'signatureStatusCompany');
+      window.addEventListener('resize', resizeAllSignaturePads);
+
+      const restored = loadState();
+      if (!restored) {
+        translateUi();
+        calculateTotal();
+      }
+
       bindLiveUpdates();
-      resizeCanvas();
-
-      signatureCanvas.addEventListener('mousedown', startDraw);
-      signatureCanvas.addEventListener('mousemove', draw);
-      window.addEventListener('mouseup', endDraw);
-
-      signatureCanvas.addEventListener('touchstart', startDraw, { passive: false });
-      signatureCanvas.addEventListener('touchmove', draw, { passive: false });
-      signatureCanvas.addEventListener('touchend', endDraw);
-
-      window.addEventListener('resize', resizeCanvas);
-      translateUi();
-      calculateTotal();
+      refreshTexts();
+      saveState();
     }
 
     init();
