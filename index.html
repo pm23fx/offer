@@ -361,7 +361,7 @@
 
     .signature-pad {
       width: 100%;
-      height: 170px;
+      height: 90px;
       display: block;
       background: #fff;
       touch-action: none;
@@ -535,12 +535,13 @@
                 <option value="furniture" data-en="Custom Furniture" data-ar="أثاث حسب الطلب">Custom Furniture</option>
                 <option value="renovation" data-en="Full Renovation" data-ar="تجديد كامل">Full Renovation</option>
                 <option value="turnkey" data-en="Turnkey Interior Project" data-ar="مشروع داخلي متكامل">Turnkey Interior Project</option>
+                <option value="plumbing" data-en="Plumbing Services" data-ar="أعمال السباكة">Plumbing Services</option>
                 <option value="custom" data-en="Custom Service" data-ar="خدمة مخصصة">Custom Service</option>
               </select>
             </div>
             <div class="field">
               <label data-i18n="duration">Duration</label>
-              <select id="duration">
+              <select id="duration" onchange="toggleCustomDuration()">
                 <option value="" data-en="Select duration" data-ar="اختر المدة">Select duration</option>
                 <option data-en="1-2 days" data-ar="1-2 يوم">1-2 days</option>
                 <option data-en="3-5 days" data-ar="3-5 أيام">3-5 days</option>
@@ -548,14 +549,12 @@
                 <option data-en="2 weeks" data-ar="أسبوعان">2 weeks</option>
                 <option data-en="3-4 weeks" data-ar="3-4 أسابيع">3-4 weeks</option>
                 <option data-en="1-2 months" data-ar="1-2 شهر">1-2 months</option>
+                <option data-en="After Inspection" data-ar="بعد المعاينة">After Inspection</option>
+                <option value="custom" data-en="Custom" data-ar="مخصص">Custom</option>
               </select>
+              <input id="customDuration" type="text" class="hidden" data-i18n-placeholder="customDurationPlaceholder" placeholder="e.g. 6 weeks, TBD after visit" style="margin-top:6px;" oninput="scheduleSaveState()">
             </div>
-            <div class="field"><label data-i18n="startDate">Estimated Start Date</label><input id="startDate" type="date"></div>
             <div class="field"><label data-i18n="validityDays">Offer Validity (Days)</label><input id="validityDays" type="number" min="1" value="7"></div>
-          </div>
-          <div class="field" style="margin-top:10px;">
-            <label data-i18n="scopeOfWork">Scope of Work</label>
-            <textarea id="scope" data-i18n-placeholder="scopePlaceholder"></textarea>
           </div>
         </section>
 
@@ -603,15 +602,9 @@
 
         <section class="section">
           <h2 data-i18n="terms">Terms & Conditions</h2>
-          <div class="grid">
-            <div class="field">
-              <label data-i18n="paymentTerms">Payment Terms (one per line)</label>
-              <textarea id="paymentTerms"></textarea>
-            </div>
-            <div class="field">
-              <label data-i18n="warranty">Warranty</label>
-              <textarea id="warranty"></textarea>
-            </div>
+          <div class="field">
+            <label data-i18n="paymentTerms">Payment Terms</label>
+            <textarea id="paymentTerms"></textarea>
           </div>
         </section>
 
@@ -663,25 +656,20 @@
           </div>
         </section>
 
-        <section class="section">
-          <h2 data-i18n="contactFooter">Contact & Footer</h2>
-          <div class="grid">
-            <div class="field"><label data-i18n="phone">Phone</label><input id="companyPhone" value="+974 7102 1381"></div>
-            <div class="field"><label data-i18n="email">Email</label><input id="companyEmail" value="info@omoginteriors.com"></div>
-            <div class="field"><label data-i18n="website">Website</label><input id="companyWebsite" value="https://omoginteriors.com"></div>
-            <div class="field"><label data-i18n="social">Instagram / TikTok</label><input id="companySocial" value="Instagram: @omogdecor | TikTok: @omog_decor"></div>
-          </div>
-          <div class="field" style="margin-top:10px;"><label data-i18n="address">Address</label><textarea id="companyAddress"></textarea></div>
+        <input type="hidden" id="companyPhone" value="+974 7102 1381">
+        <input type="hidden" id="companyEmail" value="info@omoginteriors.com">
+        <input type="hidden" id="companyWebsite" value="https://omoginteriors.com">
+        <input type="hidden" id="companySocial" value="Instagram: @omogdecor | TikTok: @omog_decor">
+        <textarea id="companyAddress" class="hidden"></textarea>
 
-          <div class="footer" id="footerPreview">
-            <strong id="footerCompany">OMO G INTERIOR DECORATION</strong>
-            <div><span>📞 </span><a id="footerPhoneLink" href="tel:+97471021381">+974 7102 1381</a></div>
-            <div><span>📧 </span><a id="footerEmailLink" href="mailto:info@omoginteriors.com">info@omoginteriors.com</a></div>
-            <div><span>🌐 </span><a id="footerWebsiteLink" target="_blank" href="https://omoginteriors.com">omoginteriors.com</a></div>
-            <div id="footerAddress"></div>
-            <div id="footerSocial">CR No: 235664 | Instagram: @omogdecor | TikTok: @omog_decor</div>
-          </div>
-        </section>
+        <div class="footer" style="padding: 16px 0 0; margin: 0;">
+          <strong id="footerCompany">OMO G INTERIOR DECORATION</strong>
+          <div><span>📞 </span><a id="footerPhoneLink" href="tel:+97471021381">+974 7102 1381</a></div>
+          <div><span>📧 </span><a id="footerEmailLink" href="mailto:info@omoginteriors.com">info@omoginteriors.com</a></div>
+          <div><span>🌐 </span><a id="footerWebsiteLink" target="_blank" href="https://omoginteriors.com">omoginteriors.com</a></div>
+          <div id="footerAddress"></div>
+          <div id="footerSocial">CR No: 235664 | Instagram: @omogdecor | TikTok: @omog_decor</div>
+        </div>
       </main>
     </div>
 
@@ -736,7 +724,7 @@
         addLink: 'Add Link',
         portfolioHint: 'You can add image uploads and external portfolio links together.',
         terms: 'Terms & Conditions',
-        paymentTerms: 'Payment Terms (one per line)',
+        paymentTerms: 'Payment Terms',
         warranty: 'Warranty',
         digitalSignature: 'Digital Signature',
         clientSignature: 'Client Signature',
@@ -769,7 +757,8 @@
         linkRequired: 'Please enter a portfolio link.',
         noSignature: 'No signature to save yet.',
         approved: 'Approved',
-        pending: 'Pending'
+        pending: 'Pending',
+        customDurationPlaceholder: 'e.g. 6 weeks, TBD after visit'
       },
       ar: {
         changeLogo: 'تغيير الشعار',
@@ -813,7 +802,7 @@
         addLink: 'إضافة رابط',
         portfolioHint: 'يمكنك إضافة صور وروابط خارجية معاً.',
         terms: 'الشروط والأحكام',
-        paymentTerms: 'شروط الدفع (سطر لكل نقطة)',
+        paymentTerms: 'شروط الدفع',
         warranty: 'الضمان',
         digitalSignature: 'التوقيع الرقمي',
         clientSignature: 'توقيع العميل',
@@ -846,7 +835,8 @@
         linkRequired: 'الرجاء إدخال رابط المشروع.',
         noSignature: 'لا يوجد توقيع للحفظ.',
         approved: 'موافق',
-        pending: 'قيد المراجعة'
+        pending: 'قيد المراجعة',
+        customDurationPlaceholder: 'مثال: 6 أسابيع، يُحدد بعد المعاينة'
       }
     };
 
@@ -856,7 +846,7 @@
         companyTagline: 'Trading & Interior Design Specialists - Doha, Qatar',
         offerBadge: 'Fast Offer',
         highlights: 'Licensed & Registered in Qatar (CR: 235664)\n45+ Successfully Completed Projects\nProfessional Team with Years of Experience\nHigh-Quality Materials & Clean Finishing\nWarranty on All Work\nTransparent Pricing - No Hidden Costs',
-        paymentTerms: '50% deposit required to start work\n50% balance due upon project completion\nPayments accepted via cash, bank transfer, or card',
+        paymentTerms: '75% deposit required to start work\n25% balance due upon project completion\nPayments accepted via cash, bank transfer, or card',
         warranty: 'All work comes with a 1-year warranty covering workmanship defects.',
         address: 'Office 70, 2nd Floor Block E, Al Mirqab Mall, Doha',
         scope: '- Gypsum ceiling installation/repair\n- LED cove lighting provision (optional)\n- Smooth finishing and paint\n- Clean delivery and site cleanup'
@@ -866,7 +856,7 @@
         companyTagline: 'التجارة والتصميم الداخلي - الدوحة، قطر',
         offerBadge: 'عرض سريع',
         highlights: 'مرخص ومسجل في قطر (السجل التجاري: 235664)\nأكثر من 45 مشروعاً منجزاً بنجاح\nفريق احترافي بخبرة طويلة\nمواد عالية الجودة وتشطيب نظيف\nضمان على جميع الأعمال\nتسعير واضح دون تكاليف مخفية',
-        paymentTerms: '50٪ دفعة مقدمة لبدء العمل\n50٪ عند اكتمال المشروع\nالدفع نقداً أو تحويل بنكي أو بطاقة',
+        paymentTerms: '75٪ دفعة مقدمة لبدء العمل\n25٪ عند اكتمال المشروع\nالدفع نقداً أو تحويل بنكي أو بطاقة',
         warranty: 'جميع الأعمال تشمل ضمان لمدة سنة ضد عيوب التنفيذ.',
         address: 'مكتب 70، الطابق الثاني، بلوك E، المرقاب مول، الدوحة',
         scope: '- تركيب/إصلاح جبس الأسقف\n- توفير إضاءة مخفية LED (اختياري)\n- تشطيب ناعم ودهان\n- تسليم نظيف مع تنظيف الموقع'
@@ -880,7 +870,8 @@
         '3dwall': '- 3D wall panel installation\n- Surface preparation\n- Professional mounting\n- LED backlighting (optional)',
         furniture: '- Custom furniture design\n- Material selection consultation\n- Professional installation\n- Finishing touches',
         renovation: '- Space planning and design\n- Demolition and preparation\n- Installation of new elements\n- Finishing and handover',
-        turnkey: '- Complete design concept\n- Material procurement\n- Full project execution\n- Furniture and accessories\n- Final handover'
+        turnkey: '- Complete design concept\n- Material procurement\n- Full project execution\n- Furniture and accessories\n- Final handover',
+        plumbing: '- Pipe installation and repair\n- Fixture installation (sinks, faucets, toilets)\n- Drainage and sewage work\n- Water heater installation/repair\n- Leak detection and fixing'
       },
       ar: {
         gypsum: defaults.ar.scope,
@@ -888,7 +879,8 @@
         '3dwall': '- تركيب ألواح جدارية ثلاثية الأبعاد\n- تجهيز السطح\n- تثبيت احترافي\n- إضاءة خلفية LED (اختياري)',
         furniture: '- تصميم أثاث حسب الطلب\n- استشارة اختيار المواد\n- تركيب احترافي\n- اللمسات النهائية',
         renovation: '- تخطيط وتصميم المساحة\n- أعمال إزالة وتجهيز\n- تركيب العناصر الجديدة\n- التشطيب والتسليم',
-        turnkey: '- مفهوم تصميم متكامل\n- توريد المواد\n- تنفيذ كامل للمشروع\n- أثاث واكسسوارات\n- تسليم نهائي'
+        turnkey: '- مفهوم تصميم متكامل\n- توريد المواد\n- تنفيذ كامل للمشروع\n- أثاث واكسسوارات\n- تسليم نهائي',
+        plumbing: '- تركيب وإصلاح الأنابيب\n- تركيب الأدوات الصحية (أحواض، حنفيات، مراحيض)\n- أعمال الصرف الصحي\n- تركيب/إصلاح سخانات المياه\n- كشف وإصلاح التسريبات'
       }
     };
 
@@ -1082,6 +1074,18 @@
       scheduleSaveState();
     }
 
+    function toggleCustomDuration() {
+      const sel = document.getElementById('duration');
+      const custom = document.getElementById('customDuration');
+      if (sel.value === 'custom') {
+        custom.classList.remove('hidden');
+        custom.focus();
+      } else {
+        custom.classList.add('hidden');
+      }
+      scheduleSaveState();
+    }
+
     function updateServiceScope() {
       const serviceType = document.getElementById('serviceType').value;
       const template = serviceTemplates[currentLang][serviceType];
@@ -1177,7 +1181,7 @@
     function setupSignaturePad(name, canvasId, statusId) {
       const canvas = document.getElementById(canvasId);
       const ctx = canvas.getContext('2d');
-      signaturePads[name] = { canvas, ctx, statusId, drawing: false, hasInk: false, savedData: '' };
+      signaturePads[name] = { canvas, ctx, statusId, drawing: false, hasInk: false, savedData: '', draftData: '' };
 
       const start = evt => {
         const pad = signaturePads[name];
@@ -1198,10 +1202,15 @@
         evt.preventDefault();
       };
 
-      const end = () => {
+      const end = evt => {
         const pad = signaturePads[name];
         pad.drawing = false;
         pad.ctx.closePath();
+        if (pad.hasInk) {
+          pad.draftData = pad.canvas.toDataURL('image/png');
+          scheduleSaveState();
+        }
+        if (evt?.preventDefault) evt.preventDefault();
       };
 
       canvas.addEventListener('mousedown', start);
@@ -1211,6 +1220,7 @@
       canvas.addEventListener('touchstart', start, { passive: false });
       canvas.addEventListener('touchmove', move, { passive: false });
       canvas.addEventListener('touchend', end);
+      canvas.addEventListener('touchcancel', end);
 
       resizeSignaturePad(name);
     }
@@ -1224,21 +1234,36 @@
     function resizeSignaturePad(name) {
       const pad = signaturePads[name];
       if (!pad) return;
-      const hasSaved = !!pad.savedData;
+      const signatureSnapshot = pad.savedData || pad.draftData;
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      const displayWidth = pad.canvas.clientWidth;
-      const displayHeight = pad.canvas.clientHeight;
+      const rect = pad.canvas.getBoundingClientRect();
+      const displayWidth = Math.max(
+        260,
+        Math.floor(rect.width || pad.canvas.clientWidth || pad.canvas.parentElement?.clientWidth || 0)
+      );
+      const displayHeight = Math.max(90, Math.floor(rect.height || pad.canvas.clientHeight || 0));
       pad.canvas.width = Math.floor(displayWidth * ratio);
       pad.canvas.height = Math.floor(displayHeight * ratio);
       pad.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
       pad.ctx.lineWidth = 2;
       pad.ctx.lineCap = 'round';
       pad.ctx.strokeStyle = '#111827';
-      if (hasSaved) drawSignatureFromData(name, pad.savedData);
+      if (signatureSnapshot) drawSignatureFromData(name, signatureSnapshot);
     }
 
     function resizeAllSignaturePads() {
       Object.keys(signaturePads).forEach(name => resizeSignaturePad(name));
+    }
+
+    function ensureSignaturePadsReady(attempt = 0) {
+      resizeAllSignaturePads();
+      const hasZeroCanvas = Object.values(signaturePads).some(pad => {
+        const rect = pad.canvas.getBoundingClientRect();
+        return rect.width < 2 || rect.height < 2;
+      });
+      if (hasZeroCanvas && attempt < 6) {
+        setTimeout(() => ensureSignaturePadsReady(attempt + 1), 120);
+      }
     }
 
     function drawSignatureFromData(name, dataUrl) {
@@ -1258,6 +1283,7 @@
       pad.ctx.clearRect(0, 0, pad.canvas.width, pad.canvas.height);
       pad.hasInk = false;
       pad.savedData = '';
+      pad.draftData = '';
       document.getElementById(pad.statusId).textContent = i18n[currentLang].signatureCleared;
       scheduleSaveState();
     }
@@ -1269,6 +1295,7 @@
         return;
       }
       pad.savedData = pad.canvas.toDataURL('image/png');
+      pad.draftData = pad.savedData;
       document.getElementById(pad.statusId).textContent = i18n[currentLang].signatureSaved;
       saveState();
     }
@@ -1320,8 +1347,8 @@
         portfolioItems,
         logoSrc: document.getElementById('logo').src || '',
         signatures: {
-          client: signaturePads.client?.savedData || '',
-          company: signaturePads.company?.savedData || ''
+          client: signaturePads.client?.savedData || signaturePads.client?.draftData || '',
+          company: signaturePads.company?.savedData || signaturePads.company?.draftData || ''
         },
         companySignerAuto: document.getElementById('companySignerName').dataset.auto || '0'
       };
@@ -1362,11 +1389,13 @@
 
         if (state.signatures?.client) {
           signaturePads.client.savedData = state.signatures.client;
+          signaturePads.client.draftData = state.signatures.client;
           drawSignatureFromData('client', state.signatures.client);
         }
 
         if (state.signatures?.company) {
           signaturePads.company.savedData = state.signatures.company;
+          signaturePads.company.draftData = state.signatures.company;
           drawSignatureFromData('company', state.signatures.company);
         }
 
@@ -1376,6 +1405,7 @@
 
         currentLang = state.currentLang || 'en';
         applyScopedFields(currentLang);
+        toggleCustomDuration();
         translateUi();
         return true;
       } catch (error) {
@@ -1403,7 +1433,8 @@
       const client = document.getElementById('client').value.trim() || (currentLang === 'ar' ? 'عميل' : 'Valued Customer');
       const service = document.getElementById('serviceType').selectedOptions[0]?.textContent || '-';
       const total = document.getElementById('totalAmount').textContent;
-      const duration = document.getElementById('duration').value || '-';
+      const durSel = document.getElementById('duration');
+      const duration = durSel.value === 'custom' ? (document.getElementById('customDuration').value.trim() || '-') : (durSel.value || '-');
       const startDate = document.getElementById('startDate').value || '-';
       const scope = document.getElementById('scope').value.trim();
       const ref = document.getElementById('offerRef').value.trim() || '-';
@@ -1513,6 +1544,8 @@
       setupSignaturePad('client', 'signaturePadClient', 'signatureStatusClient');
       setupSignaturePad('company', 'signaturePadCompany', 'signatureStatusCompany');
       window.addEventListener('resize', resizeAllSignaturePads);
+      window.addEventListener('load', () => ensureSignaturePadsReady());
+      requestAnimationFrame(() => ensureSignaturePadsReady());
 
       const restored = loadState();
       if (!restored) {
